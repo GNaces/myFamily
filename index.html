@@ -17,16 +17,21 @@
             cursor: pointer; /* Show a pointer cursor on hover */
         }
 
-        .play-button {
+        .controls {
             position: absolute;
-            top: 50%;
+            top: 95%;
             left: 50%;
             transform: translate(-50%, -50%);
+            display: flex;
+            gap: 30px; /* Space between buttons */
+        }
+
+        .control-button {
             color: white;
             font-size: 48px; /* Adjust the size as needed */
             background-color: rgba(0, 0, 0, 0.6);
             border-radius: 50%;
-            padding: 20px;
+            padding: 10px;
             text-align: center;
             cursor: pointer; /* Change cursor to pointer */
             border: none; /* Remove default border */
@@ -34,11 +39,11 @@
             transition: background-color 0.3s; /* Smooth transition for hover effect */
         }
 
-        .play-button:hover {
+        .control-button:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
 
-        .play-button:focus {
+        .control-button:focus {
             outline: none; /* Remove outline when focused */
         }
     </style>
@@ -46,9 +51,14 @@
 <body>
     <div class="picture">
         <img id="playImage" src="assets/photo/fam4.jpg" alt="Click to play music">
-        <button class="play-button" aria-label="Play Music">
-            <i class="fas fa-play"></i>
-        </button>
+        <div class="controls">
+            <button class="control-button" id="playButton" aria-label="Play Music">
+                <i class="fas fa-play"></i>
+            </button>
+            <button class="control-button" id="pauseButton" aria-label="Pause Music">
+                <i class="fas fa-pause"></i>
+            </button>
+        </div>
     </div>
     <audio id="myAudio">
         <source src="assets/photo/Lifehouse.mp3" type="audio/mpeg">
@@ -56,14 +66,18 @@
     </audio>
     <script>
         const audio = document.getElementById("myAudio");
-        const playButton = document.querySelector(".play-button");
+        const playButton = document.getElementById("playButton");
+        const pauseButton = document.getElementById("pauseButton");
 
         // Play the audio when the play button is clicked
         playButton.addEventListener("click", function() {
             audio.play();
         });
+
+        // Pause the audio when the pause button is clicked
+        pauseButton.addEventListener("click", function() {
+            audio.pause();
+        });
     </script>
-
-
 </body>
 </html>

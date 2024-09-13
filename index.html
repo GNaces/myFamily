@@ -6,9 +6,15 @@
     <title>Naces Family</title>
     <style>
         #picture {
-            width: 100%;
+            width: 80%; /* The image will be 80% of the width of its parent container */
+            margin: 0 auto; /* Center the image */
         }
-        
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -16,8 +22,6 @@
         <img src="assets/photo/fam4.jpg" alt="family photo">
     </div>
     <h1>Naces Family</h1>
-
-    <!-- Adding audio to the page -->
     <audio id="myAudio" autoplay>
         <source src="assets/photo/Lifehouse.mp3" type="audio/mpeg">
         Your browser does not support the audio element.

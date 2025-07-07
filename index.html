@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <title>Naces Family</title>
     <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      background: #f0f0f0;
-      text-align: center;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: #a7a5a5;
+            text-align: center;
+        }
 
-    .video-container {
-      position: relative;
-      width: 100%;
-      max-width: 800px;
-      margin: auto;
-      padding-top: 56.25%; /* 16:9 aspect ratio */
-    }
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            padding-top: 56.25%;
+            /* 16:9 aspect ratio */
+        }
 
-    .video-container video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  </style>
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 5px solid black;
+            /* Black border around video */
+        }
+    </style>
     <!-- <style>
         .picture {
             position: relative;
@@ -73,11 +77,13 @@
         }
     </style> -->
 </head>
+
 <body>
-    <div class="picture">
+    <div class="video-container">
+        <video controls poster="assets/photo/fam5.jpg"></video>
         <!-- <img id="playImage" src="assets/photo/fam5.jpg" alt="Click to play music"> -->
-         <video width="300" height="360" controls>
-            <source src="assets/photo/famvid2.mp4" type="video/mp4">
+        <video width="300" height="360" controls>
+            <source src="assets/photo/famvid2.mp4" type="video/mp4" />
         </video>
         <!-- <div class="controls">
             <button class="control-button" id="playButton" aria-label="Play Music">
@@ -107,5 +113,61 @@
             audio.pause();
         });
     </script> -->
+    <div style="margin-top: 40px;">
+        <h2>Contact Me</h2>
+        <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; font-size: 24px;">
+
+            <!-- Phone -->
+            <a href="tel:+447889491879" target="_blank" style="text-decoration: none; color: black;">
+                <i class="fas fa-phone"></i> Call
+            </a>
+
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/godwin.naces" target="_blank"
+                style="text-decoration: none; color: #1877f2;">
+                <i class="fab fa-facebook"></i> Facebook
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/godwinnaces" target="_blank"
+                style="text-decoration: none; color: #E1306C;">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/GNaces" target="_blank" style="text-decoration: none; color: #333;">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/godwin-naces-software-dev/" target="_blank"
+                style="text-decoration: none; color: #0A66C2;">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+
+        </div>
+    </div>
+    <div style="margin-top: 30px;">
+        <button onclick="requestAccess()" style="font-size: 18px; padding: 10px 20px; cursor: pointer;">
+            UK Driver's License
+        </button>
+    </div>
+
+    <script>
+        function requestAccess() {
+            const correctPassword = "1989"; // Set your access code here
+            const userInput = prompt("Enter access code:");
+
+            if (userInput === correctPassword) {
+                window.open("assets/photo/DL-f.jpg", "_blank");
+            } else if (userInput === null) {
+                // Cancelled
+                alert("Access cancelled.");
+            } else {
+                alert("Incorrect code. Access denied.");
+            }
+        }
+    </script>
 </body>
+
 </html>

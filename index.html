@@ -246,110 +246,100 @@
   display: flex;
   justify-content: center;
 ">
-        <div class="flag-container">
-            <button onclick="openPasswordModal()"
-                style="font-size: 14px; padding: 6px 10px; cursor: pointer; border: none; border-radius: 4px; background-color: navy; color: white; font-weight: bold;">
-                Driver's License
-            </button>
+        <!-- <div class="flag-container"> -->
+        <!-- Trigger Button -->
+        <button onclick="openPasswordBox()"
+            style="font-size: 14px; padding: 6px 10px; cursor: pointer; border: none; border-radius: 4px; background-color: navy; color: white; font-weight: bold;">
+            Driver's License
+        </button>
 
-            <!-- Password Modal Overlay -->
-            <div id="passwordModal" style="
+        <!-- Password Box -->
+        <div id="passwordBox" style="
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: white;
+    padding: 15px 20px;
+    width: 280px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+    border-radius: 8px;
     z-index: 9999;
-    justify-content: center;
-    align-items: center;
+    animation: fadeInMiddle 0.4s ease forwards;
+    box-sizing: border-box;
 ">
-                <!-- Modal Box -->
-                <div id="passwordBox" style="
-        background: white;
-        border-radius: 8px;
-        padding: 25px 30px;
-        width: 90%;
-        max-width: 350px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        transform: translateY(-100vh);
-        opacity: 0;
-        animation: slideDownToMiddle 0.6s ease-out forwards;
-        position: relative;
-    ">
-                    <!-- Close Button -->
-                    <button onclick="closePasswordModal()" style="
-            position: absolute;
-            top: 10px;
-            right: 12px;
-            border: none;
-            background: none;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-        ">&times;</button>
 
-                    <!-- Form -->
-                    <form onsubmit="return checkAccessCode()">
-                        <input type="password" id="codeInput" placeholder="Access Code"
-                            style="width: 100%; padding: 10px; font-size: 16px; margin-bottom: 15px;" required />
-                        <button type="submit" style="width: 100%; padding: 10px; font-size: 16px;">View</button>
-                    </form>
-                </div>
-            </div>
+            <!-- Close Button -->
+            <button onclick="closePasswordBox()" style="
+        position: absolute;
+        top: 5px;
+        right: 8px;
+        border: none;
+        background: none;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+    ">&times;</button>
 
-            <!-- Animation -->
-            <style>
-                @keyframes slideDownToMiddle {
-                    0% {
-                        transform: translateY(-100vh);
-                        opacity: 0;
-                    }
+            <!-- Form -->
+            <form onsubmit="return checkAccessCode()">
+                <input type="password" id="codeInput" placeholder="Enter Access Code"
+                    style="width: 100%; padding: 8px; font-size: 14px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;"
+                    required />
+                <button type="submit" style="width: 100%; padding: 8px; font-size: 14px;">View</button>
+            </form>
+        </div>
 
-                    100% {
-                        transform: translateY(0);
-                        opacity: 1;
-                    }
-                }
-            </style>
-
-            <!-- JavaScript -->
-            <script>
-                function openPasswordModal() {
-                    const modal = document.getElementById('passwordModal');
-                    const box = document.getElementById('passwordBox');
-                    modal.style.display = 'flex';
-
-                    // Reset and restart animation
-                    box.style.animation = 'none';
-                    void box.offsetWidth; // trigger reflow
-                    box.style.animation = 'slideDownToMiddle 0.6s ease-out forwards';
+        <!-- Animation -->
+        <style>
+            @keyframes fadeInMiddle {
+                from {
+                    opacity: 0;
+                    transform: translate(-50%, -60%) scale(0.85);
                 }
 
-                function closePasswordModal() {
-                    document.getElementById('passwordModal').style.display = 'none';
+                to {
+                    opacity: 1;
+                    transform: translate(-50%, -50%) scale(1);
+                }
+            }
+        </style>
+
+        <!-- JavaScript -->
+        <script>
+            function openPasswordBox() {
+                const box = document.getElementById('passwordBox');
+                box.style.display = 'block';
+                box.style.animation = 'none'; // Reset
+                void box.offsetWidth; // Force reflow
+                box.style.animation = 'fadeInMiddle 0.4s ease forwards';
+            }
+
+            function closePasswordBox() {
+                document.getElementById('passwordBox').style.display = 'none';
+            }
+
+            function checkAccessCode() {
+                const correctCode = "1989";
+                const input = document.getElementById("codeInput").value;
+
+                if (input === correctCode) {
+                    window.open("assets/photo/driver-license.jpeg", "_blank");
+                    setTimeout(() => window.location.reload(), 3000);
+                } else {
+                    alert("Incorrect access code Mate, try again.");
                 }
 
-                function checkAccessCode() {
-                    const correctCode = "1989";
-                    const userInput = document.getElementById("codeInput").value;
-
-                    if (userInput === correctCode) {
-                        window.open("assets/photo/driver-license.jpeg", "_blank");
-                        setTimeout(() => window.location.reload(), 3000);
-                    } else {
-                        alert("Incorrect access code Mate, try again.");
-                    }
-
-                    return false;
-                }
-            </script>
-            <script>
-                const birthYear = 1989;
-                const currentYear = new Date().getFullYear();
-                const age = currentYear - birthYear;
-                document.getElementById('age').textContent = age;
-            </script>
+                return false;
+            }
+        </script>
+        <script>
+            const birthYear = 1989;
+            const currentYear = new Date().getFullYear();
+            const age = currentYear - birthYear;
+            document.getElementById('age').textContent = age;
+        </script>
 </body>
 
 </html>

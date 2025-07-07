@@ -147,27 +147,56 @@
 
         </div>
     </div>
-    <div style="margin-top: 30px;">
-        <button onclick="requestAccess()" style="font-size: 18px; padding: 10px 20px; cursor: pointer;">
-            UK Driver's License
-        </button>
-    </div>
+    <!-- UK flag background box with the driver's license access button inside -->
+    <div style="
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+">
+        <div style="
+    background-image: url('https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg');
+    background-size: cover;
+    background-position: center;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    text-align: center;
+  ">
+            <button onclick="document.getElementById('passwordBox').style.display='block'"
+                style="font-size: 18px; padding: 10px 20px; cursor: pointer; border: none; border-radius: 5px; background-color: white; color: black; font-weight: bold;">
+                Driver's License
+            </button>
 
-    <script>
-        function requestAccess() {
-            const correctPassword = "1989"; // Set your access code here
-            const userInput = prompt("Enter access code:");
+            <!-- Hidden password form -->
+            <div id="passwordBox" style="display: none; margin-top: 20px;">
+                <form onsubmit="return checkAccessCode()">
+                    <input type="password" id="codeInput" placeholder="Enter Access Code"
+                        style="padding: 10px; font-size: 16px;" required />
+                    <button type="submit" style="padding: 10px 15px; font-size: 16px;">View</button>
+                </form>
+            </div>
 
-            if (userInput === correctPassword) {
-                window.open("assets/photo/DL-f.jpg", "_blank");
-            } else if (userInput === null) {
-                // Cancelled
-                alert("Access cancelled.");
-            } else {
-                alert("Incorrect code. Access denied.");
-            }
-        }
-    </script>
+            <script>
+                function checkAccessCode() {
+                    const correctCode = "1989"; // Replace with your real access code
+                    const userInput = document.getElementById("codeInput").value;
+
+                    if (userInput === correctCode) {
+                        // Open the license in a new tab
+                        window.open("assets/photo/DL-f.jpg", "_blank");
+
+                        // Delay refresh so user has time to view it
+                        setTimeout(() => {
+                            window.location.reload(); // Refresh the page
+                        }, 3000); // 3 seconds delay
+                    } else {
+                        alert("Incorrect access code Mate, try again.");
+                    }
+
+                    return false; // Prevent form submission
+                }
+            </script>
+
 </body>
 
 </html>

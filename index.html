@@ -33,6 +33,73 @@
             border: 5px solid black;
             /* Black border around video */
         }
+
+        /* Contact section animation */
+        .contact-section {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-links a {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            transform: scale(1.1);
+            color: #444;
+        }
+
+        /* Waving flag container */
+        .flag-container {
+            background-image: url('https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg');
+            background-size: cover;
+            background-position: center;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+
+            /* Animation properties */
+            animation: wave 5s ease-in-out infinite;
+            transform-origin: center center;
+        }
+
+        /* Keyframes for waving effect */
+        @keyframes wave {
+            0% {
+                transform: perspective(600px) rotateY(0deg) skewY(0deg) scale(1);
+                background-position: center;
+            }
+
+            25% {
+                transform: perspective(600px) rotateY(-2deg) skewY(1deg) scale(1.01);
+                background-position: 48% center;
+            }
+
+            50% {
+                transform: perspective(600px) rotateY(0deg) skewY(0deg) scale(1);
+                background-position: center;
+            }
+
+            75% {
+                transform: perspective(600px) rotateY(2deg) skewY(-1deg) scale(1.01);
+                background-position: 52% center;
+            }
+
+            100% {
+                transform: perspective(600px) rotateY(0deg) skewY(0deg) scale(1);
+                background-position: center;
+            }
+        }
     </style>
     <!-- <style>
         .picture {
@@ -113,9 +180,10 @@
             audio.pause();
         });
     </script> -->
-    <div style="margin-top: 40px;">
-        <h2>Contact Me</h2>
-        <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; font-size: 24px;">
+    <div class="contact-section" style="margin-top: 40px;">
+        <h2 style="animation: fadeInUp 1s ease forwards; animation-delay: 0.2s;">Contact Me</h2>
+        <div class="contact-links"
+            style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; font-size: 24px;">
 
             <!-- Phone -->
             <a href="tel:+447889491879" target="_blank" style="text-decoration: none; color: black;">
@@ -153,15 +221,7 @@
   display: flex;
   justify-content: center;
 ">
-        <div style="
-    background-image: url('https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg');
-    background-size: cover;
-    background-position: center;
-    padding: 20px 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    text-align: center;
-  ">
+        <div class="flag-container">
             <button onclick="document.getElementById('passwordBox').style.display='block'"
                 style="font-size: 18px; padding: 10px 20px; cursor: pointer; border: none; border-radius: 5px; background-color: white; color: black; font-weight: bold;">
                 Driver's License
@@ -183,7 +243,7 @@
 
                     if (userInput === correctCode) {
                         // Open the license in a new tab
-                        window.open("assets/photo/DL-f.jpg", "_blank");
+                        window.open("assets/photo/driver-license.jpeg", "_blank");
 
                         // Delay refresh so user has time to view it
                         setTimeout(() => {

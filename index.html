@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Personal profile page of Godwin C. Naces - Accountant & Software Developer. Contact details, resume, and personal information.">
+    <meta name="description"
+        content="Personal profile page of Godwin C. Naces - Accountant & Software Developer. Contact details, resume, and personal information.">
     <link rel="icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <title>About Me</title>
@@ -133,7 +134,7 @@
             gap: 10px;
             margin: 8px 0;
             font-size: 18px;
-            
+
         }
 
         .about-list li strong {
@@ -175,7 +176,8 @@
         </p>
     </div>
     <div class="contact-section left-align-container" style="margin-top: 40px;">
-        <h3 style="animation: fadeInUp 1s ease forwards; font-size: 16px; animation-delay: 0.2s; margin: 10px 0;">Get in touch:</h3>
+        <h3 style="animation: fadeInUp 1s ease forwards; font-size: 16px; animation-delay: 0.2s; margin: 10px 0;">Get in
+            touch:</h3>
         <div class="contact-links"
             style="display: flex; justify-content: flex-start; gap: 30px; flex-wrap: wrap; font-size: 24px;">
 
@@ -203,7 +205,8 @@
             </a>
         </div>
 
-        <h3 style="animation: fadeInUp 1s ease forwards; font-size: 16px; animation-delay: 0.2s; margin: 20px 0 10px;">Profile:</h3>
+        <h3 style="animation: fadeInUp 1s ease forwards; font-size: 16px; animation-delay: 0.2s; margin: 20px 0 10px;">
+            Profile:</h3>
         <div class="contact-links"
             style="display: flex; justify-content: flex-start; gap: 30px; flex-wrap: wrap; font-size: 24px;">
 
@@ -244,38 +247,101 @@
   justify-content: center;
 ">
         <div class="flag-container">
-            <button onclick="document.getElementById('passwordBox').style.display='block'"
-                style="font-size: 14px; padding: 1px 6px; cursor: pointer; border: none; border-radius: 4px; background-color: transparent; color: white; font-weight: bold;">
+            <button onclick="openPasswordModal()"
+                style="font-size: 14px; padding: 6px 10px; cursor: pointer; border: none; border-radius: 4px; background-color: navy; color: white; font-weight: bold;">
                 Driver's License
             </button>
 
-            <!-- Hidden password form -->
-            <div id="passwordBox" style="display: none; margin-top: 20px;">
-                <form onsubmit="return checkAccessCode()">
-                    <input type="password" id="codeInput" placeholder="Enter Access Code"
-                        style="padding: 10px; font-size: 16px;" required />
-                    <button type="submit" style="padding: 10px 15px; font-size: 16px;">View</button>
-                </form>
+            <!-- Password Modal Overlay -->
+            <div id="passwordModal" style="
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+">
+                <!-- Modal Box -->
+                <div id="passwordBox" style="
+        background: white;
+        border-radius: 8px;
+        padding: 25px 30px;
+        width: 90%;
+        max-width: 350px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        transform: translateY(-100vh);
+        opacity: 0;
+        animation: slideDownToMiddle 0.6s ease-out forwards;
+        position: relative;
+    ">
+                    <!-- Close Button -->
+                    <button onclick="closePasswordModal()" style="
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            border: none;
+            background: none;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        ">&times;</button>
+
+                    <!-- Form -->
+                    <form onsubmit="return checkAccessCode()">
+                        <input type="password" id="codeInput" placeholder="Access Code"
+                            style="width: 100%; padding: 10px; font-size: 16px; margin-bottom: 15px;" required />
+                        <button type="submit" style="width: 100%; padding: 10px; font-size: 16px;">View</button>
+                    </form>
+                </div>
             </div>
 
+            <!-- Animation -->
+            <style>
+                @keyframes slideDownToMiddle {
+                    0% {
+                        transform: translateY(-100vh);
+                        opacity: 0;
+                    }
+
+                    100% {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                }
+            </style>
+
+            <!-- JavaScript -->
             <script>
+                function openPasswordModal() {
+                    const modal = document.getElementById('passwordModal');
+                    const box = document.getElementById('passwordBox');
+                    modal.style.display = 'flex';
+
+                    // Reset and restart animation
+                    box.style.animation = 'none';
+                    void box.offsetWidth; // trigger reflow
+                    box.style.animation = 'slideDownToMiddle 0.6s ease-out forwards';
+                }
+
+                function closePasswordModal() {
+                    document.getElementById('passwordModal').style.display = 'none';
+                }
+
                 function checkAccessCode() {
-                    const correctCode = "1989"; // Replace with your real access code
+                    const correctCode = "1989";
                     const userInput = document.getElementById("codeInput").value;
 
                     if (userInput === correctCode) {
-                        // Open the license in a new tab
                         window.open("assets/photo/driver-license.jpeg", "_blank");
-
-                        // Delay refresh so user has time to view it
-                        setTimeout(() => {
-                            window.location.reload(); // Refresh the page
-                        }, 3000); // 3 seconds delay
+                        setTimeout(() => window.location.reload(), 3000);
                     } else {
                         alert("Incorrect access code Mate, try again.");
                     }
 
-                    return false; // Prevent form submission
+                    return false;
                 }
             </script>
             <script>

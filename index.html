@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <title>Naces Family</title>
+    <title>About Me</title>
     <style>
         body {
             margin: 0;
@@ -42,6 +42,18 @@
             animation-delay: 0.5s;
         }
 
+        .left-align-container {
+            max-width: 600px;
+            /* Optional: controls max width */
+            margin: 40px auto;
+            /* Center container horizontally, with vertical margin */
+            text-align: left;
+            /* Align text left */
+            padding: 0 20px;
+            /* Optional horizontal padding */
+            font-size: 20px;
+        }
+
         @keyframes fadeInUp {
             to {
                 opacity: 1;
@@ -51,6 +63,8 @@
 
         .contact-links a {
             transition: transform 0.3s ease, color 0.3s ease;
+            font-size: 20px;
+            text-decoration: underline;
         }
 
         .contact-links a:hover {
@@ -99,50 +113,34 @@
                 transform: perspective(600px) rotateY(0deg) skewY(0deg) scale(1);
                 background-position: center;
             }
+
         }
     </style>
-    <!-- <style>
-        .picture {
-            position: relative;
-            display: inline-block;
+    <style>
+        .about-list {
+            list-style-type: none;
+            padding-left: 0;
+            max-width: 400px;
+            margin: 20px auto;
+            text-align: left;
         }
 
-        .picture img {
-            max-width: 100%;
-            height: auto;
-            cursor: pointer; /* Show a pointer cursor on hover */
-        }
-
-        .controls {
-            position: absolute;
-            top: 110%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .about-list li {
             display: flex;
-            gap: 30px; /* Space between buttons */
+            align-items: flex-start;
+            gap: 10px;
+            margin: 8px 0;
+            font-size: 18px;
+            
         }
 
-        .control-button {
-            color: white;
-            font-size: 48px; /* Adjust the size as needed */
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 50%;
-            padding: 10px;
-            text-align: center;
-            cursor: pointer; /* Change cursor to pointer */
-            border: none; /* Remove default border */
-            outline: none; /* Remove default outline */
-            transition: background-color 0.3s; /* Smooth transition for hover effect */
+        .about-list li strong {
+            min-width: 130px;
+            /* Adjust width as needed for alignment */
+            text-align: right;
         }
+    </style>
 
-        .control-button:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .control-button:focus {
-            outline: none; /* Remove outline when focused */
-        }
-    </style> -->
 </head>
 
 <body>
@@ -152,38 +150,33 @@
         <video width="300" height="360" controls>
             <source src="assets/photo/famvid2.mp4" type="video/mp4" />
         </video>
-        <!-- <div class="controls">
-            <button class="control-button" id="playButton" aria-label="Play Music">
-                <i class="fas fa-play"></i>
-            </button>
-            <button class="control-button" id="pauseButton" aria-label="Pause Music">
-                <i class="fas fa-pause"></i>
-            </button>
-        </div> -->
     </div>
-    <!-- <audio id="myAudio">
-        <source src="assets/photo/CalumScott.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio> -->
-    <!-- <script>
-        const audio = document.getElementById("myAudio");
-        const playButton = document.getElementById("playButton");
-        const pauseButton = document.getElementById("pauseButton");
 
-        // Play the audio when the play button is clicked
-        playButton.addEventListener("click", function() {
-            audio.play();
-        });
-
-        // Pause the audio when the pause button is clicked
-        pauseButton.addEventListener("click", function() {
-            audio.pause();
-        });
-    </script> -->
-    <div class="contact-section" style="margin-top: 40px;">
-        <h2 style="animation: fadeInUp 1s ease forwards; animation-delay: 0.2s;">Contact Me</h2>
+    <div class="about-section">
+        <h2 style="text-decoration: underline; font-style: oblique; ">Godwin C. Naces</h2>
+        <ul class="about-list">
+            <li><strong>Nationality:</strong> Filipino</li>
+            <li><strong>Profession:</strong> Accountant, Software Developer</li>
+            <li><strong>Age:</strong> <span id="age"></span> y/o</li>
+            <li><strong>Gender:</strong> Heterosexual Man</li>
+            <li><strong>Blood Type:</strong> A+</li>
+            <li><strong>Kid's Names:</strong> Godlee & Godrienne</li>
+        </ul>
+    </div>
+    <!-- Insert emergency contact here -->
+    <div
+        style="margin: 20px auto 10px; font-size: 16px; color: #b22222; font-weight: bold; text-align: left; max-width: 600px;">
+        <h4 style="margin: 0 15px 5px;">In case of emergency,</h4>
+        <p style="margin: 0 15px;">
+            <a href="tel:+447425221964" style="color: #b22222; text-decoration: underline; font-size: 20px">
+                <i class="fas fa-phone" style="margin-right: 6px;"></i>Mrs. March Lee D. Naces
+            </a>
+        </p>
+    </div>
+    <div class="contact-section left-align-container" style="margin-top: 40px;">
+        <h3 style="animation: fadeInUp 1s ease forwards; animation-delay: 0.2s; margin: 10px 0;">Get in touch:</h3>
         <div class="contact-links"
-            style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; font-size: 24px;">
+            style="display: flex; justify-content: flex-start; gap: 30px; flex-wrap: wrap; font-size: 24px;">
 
             <!-- Phone -->
             <a href="tel:+447889491879" target="_blank" style="text-decoration: none; color: rgb(1, 63, 14);">
@@ -195,15 +188,28 @@
                 <i class="fab fa-whatsapp"></i> <strong>WhatsApp</strong>
             </a>
 
+            <!-- Messenger -->
+            <a href="https://m.me/godwin.naces" target="_blank" style="text-decoration: none; color: #0084FF;">
+                <i class="fab fa-facebook-messenger"></i> <strong>Messenger</strong>
+            </a>
+
+            <a href="mailto:godwinnaces@gmail.com" target="_blank" style="text-decoration: none; color: #D44638;">
+                <i class="fas fa-envelope"></i> <strong>Gmail</strong>
+            </a>
+
+            <a href="mailto:godwinnaces@icloud.com" target="_blank" style="text-decoration: none; color: #1e90ff;">
+                <i class="fas fa-envelope-open-text"></i> <strong>iCloud</strong>
+            </a>
+        </div>
+
+        <h3 style="animation: fadeInUp 1s ease forwards; animation-delay: 0.2s; margin: 20px 0 10px;">Profile:</h3>
+        <div class="contact-links"
+            style="display: flex; justify-content: flex-start; gap: 30px; flex-wrap: wrap; font-size: 24px;">
+
             <!-- Facebook -->
             <a href="https://www.facebook.com/godwin.naces" target="_blank"
                 style="text-decoration: none; color: #1877f2;">
                 <i class="fab fa-facebook"></i> <strong>Facebook</strong>
-            </a>
-
-            <!-- Messenger -->
-            <a href="https://m.me/godwin.naces" target="_blank" style="text-decoration: none; color: #0084FF;">
-                <i class="fab fa-facebook-messenger"></i> <strong>Messenger</strong>
             </a>
 
             <!-- Instagram -->
@@ -223,12 +229,13 @@
                 <i class="fab fa-linkedin"></i> <strong>LinkedIn</strong>
             </a>
 
-            <a href="mailto:godwinnaces@gmail.com" target="_blank" style="text-decoration: none; color: #D44638;">
-                <i class="fas fa-envelope"></i> <strong>Gmail</strong>
+            <!-- Download CV -->
+            <a href="assets/photo/Godwin-Naces-CV.pdf" download style="text-decoration: none; color: #00008B;">
+                <i class="fas fa-file-download"></i> <strong>Download CV</strong>
             </a>
-
         </div>
     </div>
+
     <!-- UK flag background box with the driver's license access button inside -->
     <div style="
   margin-top: 40px;
@@ -237,7 +244,7 @@
 ">
         <div class="flag-container">
             <button onclick="document.getElementById('passwordBox').style.display='block'"
-                style="font-size: 18px; padding: 10px 20px; cursor: pointer; border: none; border-radius: 5px; background-color: white; color: black; font-weight: bold;">
+                style="font-size: 14px; padding: 1px 6px; cursor: pointer; border: none; border-radius: 4px; background-color: transparent; color: white; font-weight: bold;">
                 Driver's License
             </button>
 
@@ -270,7 +277,12 @@
                     return false; // Prevent form submission
                 }
             </script>
-
+            <script>
+                const birthYear = 1989;
+                const currentYear = new Date().getFullYear();
+                const age = currentYear - birthYear;
+                document.getElementById('age').textContent = age;
+            </script>
 </body>
 
 </html>

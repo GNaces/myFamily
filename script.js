@@ -10,7 +10,7 @@ function checkAccessCode() {
     const userInput = document.getElementById("codeInput").value;
 
     if (userInput === correctCode) {
-        window.open("assets/photo/driver-license.jpeg", "_blank");
+        window.open("assets/photo/DLnewF.jpg", "_blank");
         setTimeout(() => {
             window.location.reload();
         }, 3000);
